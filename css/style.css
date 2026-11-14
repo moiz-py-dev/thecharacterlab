@@ -498,3 +498,11 @@ img[src*="reflection-teen"] {
 .cta {
   position: relative;
 }
+@media (max-width: 900px) {
+  .fc-2 {
+    top: -1%;
+  }
+}
+@media (min-width: 900px) {
+  #team-grid .person.solo { grid-column: 2; }
+}
