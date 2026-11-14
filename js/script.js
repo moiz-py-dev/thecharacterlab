@@ -47,8 +47,6 @@ const testimonials = [
   ["The Seerat tul Nabi course was a profound and transformative experience. It helped me connect with our Beloved Prophet (PBUH) at a deeper level. I shared his joys and sorrows, went with him to battle, and sat with him at dinner. 100% recommend!","Eemaan Binte Fayyaz","25"]
 ];
 const team = [
-  ["Maulana Tariq Jameel","Ustad-e-Mohtaram · Spiritual Guide to Our Faculty","A revered voice in Islamic scholarship, Maulana Tariq Jameel founded Meem Academy in Lahore, an educational initiative devoted to children's spiritual and character development. Our faculty has had the honour of training under his guidance, drawing on a lifetime of wisdom in nurturing character and faith."],
-  ["Jahanzeb Burana","Mentor · Faculty Training & Curriculum Design","The architect behind our character-building curriculum, Jahanzeb personally trained our faculty and shaped the high-caliber content that anchors every session, including the case-study approach at the heart of our method. An entrepreneur and Harvard MBA, he is co-founder of Hoopoe and a founding board member of NIT Lahore. As former CEO of PBIT, he now lends his expertise to education and investment policy through roles in the GCC and Pakistan's Task Force on FDI."],
   ["Maryam Sinclair","Mentor · Faculty Training in Storytelling","Maryam brought the craft of storytelling to our faculty, shaping how our team narrates the Seerah with warmth and depth. She is the award-winning author of When Wings Expand, Miraculous Happenings in the Year of the Elephant, and A Trust of Treasures, along with five audiobooks including A Mercy to the Worlds and The Bowing of the Stars. Her narrations of classical Qur'anic stories have reached thousands of live listeners across the US, UK, Turkey, Jordan, Pakistan, Australia, and New Zealand."],
   ["Abdal Munir","PhD Scholar (Turkey) — Seerah & Character Education","Abdal connects timeless Prophetic wisdom with the questions, challenges, and choices young people face today. His expertise spans Seerah storytelling, character building, and youth development, alongside work as a life coach and in Islamic entrepreneurship."],
   ["Nabeela Raheel","Director of Training & Curriculum Development","A resourceful educationist, Nabeela has honed her craft over years of teaching and leadership, most recently as Ex-Principal of Meem School. She is a Master Trainer at Synapra, a Leadership Accredited Trainer and internationally certified Curriculum Developer and Teacher Leader with The CPD Standards Office, UK, and holds an MPhil in Education alongside the LC-A CSML Course from Boston, Massachusetts. Her international certifications and diverse experience make her a sought-after consultant for teacher training."],
@@ -59,7 +57,7 @@ const team = [
 ];
 const teamPhotos = {"Maulana Tariq Jameel": "images/team/maulana-tariq-jameel.jpg", "Jahanzeb Burana": "images/team/jahanzeb-burana.jpg", "Maryam Sinclair": "images/team/maryam-sinclair.jpg", "Nabeela Raheel": "images/team/nabeela-raheel.jpg", "Safaa Ali Feroze": "images/team/safaa-ali-feroze.jpg", "Asma Baig": "images/team/asma-baig.jpg", "Muhammad Qasim Puri": "images/team/muhammad-qasim-puri.jpg", "Abdal Munir": "images/team/abdal-munir.jpg", "Muhammad Ahsan Gillani": "images/team/muhammad-ahsan-gillani.jpg"};
 
-/* ---------- render ---------- */
+ /* ---------- render ---------- */
 const q=s=>document.querySelector(s);
 q('#problem-grid').innerHTML = problems.map(p=>`<div class="card accent-sky"><div class="ico">${p[0]}</div><h3 style="font-size:1.05rem">${p[1]}</h3></div>`).join('');
 q('#method-steps').innerHTML = methodSteps.map(s=>`<div class="step"><i>${s[0]}</i><h4>${s[1]}</h4><p>${s[2]}</p></div>`).join('');
@@ -74,14 +72,14 @@ q('#testimonials').innerHTML = testimonials.map(t=>{
   return `<div class="tst"><div class="quote">"</div><p>${t[0]}</p><div class="who">${avatarHtml}<div><b>${t[1]}</b><span>${t[2]?('Age '+t[2]):'Learner'}</span></div></div></div>`;
 }).join('');
 q('#team-grid').innerHTML = team.map((m,i)=>{
-  const group = i===0 ? 'Our Mentors' : i===3 ? 'Our Leaders' : i===6 ? 'Our Team' : '';
+  const group = i===0 ? 'Our Mentors' : i===1 ? 'Our Leaders' : i===4 ? 'Our Team' : '';
   const groupHeading = group ? `<h3 class="team-group-title">${group}</h3>` : '';
   const ini=m[0].split(' ').filter(w=>w.length>1).map(w=>w[0]).slice(0,2).join('');
   const img = teamPhotos[m[0]];
   const head = img
     ? `<img class="photo" src="${img}" alt="${m[0]}">`
     : `<div class="ph"><div class="mono">${ini}</div></div>`;
-  return `${groupHeading}<div class="person">${head}<div><h4>${m[0]}</h4><div class="role">${m[1]}</div></div><p>${m[2]}</p></div>`;
+return `${groupHeading}<div class="person ${i===0?'solo':''}">${head}<div><h4>${m[0]}</h4><div class="role">${m[1]}</div></div><p>${m[2]}</p></div>`;
 }).join('');
 
 /* ---------- interactions ---------- */
